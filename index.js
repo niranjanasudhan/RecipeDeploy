@@ -11,12 +11,13 @@ app.use(cors())
 app.use(express.static(path.join(__dirname, '/build')));
 
 
-app.use(express.static('public'));
-app.use('/tmp', express.static('tmp'));
+app.use(express.static('/tmp'));
+app.use('./tmp', express.static('/tmp'));
+// const upload = multer({ dest: 'public/files' })
 
 var storage = multer.diskStorage({
     destination: function(req, file, cb) {
-        cb(null, '/tmp')
+        cb(null, './tmp')
     },
     filename: function(req, file, cb) {
         cb(null, file.originalname) //Appending .jpg
