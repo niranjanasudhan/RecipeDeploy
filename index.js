@@ -11,8 +11,8 @@ app.use(cors())
 app.use(express.static(path.join(__dirname, '/build')));
 
 
-app.use(express.static('./tmp'));
-app.use('./tmp', express.static('./tmp'));
+app.use(express.static('public'));
+app.use('./tmp', express.static('tmp'));
 // const upload = multer({ dest: 'public/files' })
 
 var storage = multer.diskStorage({
