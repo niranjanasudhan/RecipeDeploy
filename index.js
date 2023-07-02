@@ -12,20 +12,11 @@ app.use(express.static(path.join(__dirname, '/build')));
 
 
 app.use(express.static('public'));
-app.use('/files', express.static('files'));
-// const upload = multer({ dest: 'public/files' })
+app.use('/tmp', express.static('tmp'));
 
-// const upload = multer({
-//     dest: 'public/files',
-//     filename: function(req, file, cb) {
-//         //req.body is empty...
-//         //How could I get the new_file_name property sent from client here?
-//         cb(null, file.originalname);
-//     }
-// });
 var storage = multer.diskStorage({
     destination: function(req, file, cb) {
-        cb(null, 'public/files')
+        cb(null, '/tmp')
     },
     filename: function(req, file, cb) {
         cb(null, file.originalname) //Appending .jpg
